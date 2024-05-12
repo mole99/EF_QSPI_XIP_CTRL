@@ -65,6 +65,7 @@ module EF_QSPI_XIP_CTRL_ahbl #(parameter    NUM_LINES   = 16,
     localparam [1:0]    IDLE    =   2'b00;
     localparam [1:0]    WAIT    =   2'b01;
     localparam [1:0]    RW      =   2'b10;
+    localparam      OFF_WIDTH   = $clog2(LINE_SIZE);
 
     // Cache wires/buses
     wire [31:0]                 c_datao;
@@ -172,7 +173,7 @@ module EF_QSPI_XIP_CTRL_ahbl #(parameter    NUM_LINES   = 16,
     FR (   
             .clk(HCLK), 
             .rst_n(HRESETn), 
-            .addr({HADDR[23:4], 4'd0}), 
+            .addr({HADDR[23:OFF_WIDTH], {OFF_WIDTH{1'b0}}}), 
             .rd(fr_rd), 
             .done(fr_done), 
             .line(c_line),
