@@ -1,14 +1,14 @@
 ---
 info:
-  name: EF_UART
+  name: EF_QSPI_XIP_CTRL
   description: A QSPI XiP Flash COntroller with a parameterized Direct-Mapped Cache.
-  repo: https://github.com/efabless/EF_UART.git
+  repo: github.com/efabless/EF_QSPI_XIP_CTRL
   owner: Efabless Corp.
   license: APACHE 2.0
   author: Mohamed Shalan
   email: mshalan@efabless.com
-  version: v1.1.0
-  date: 1-1-2018
+  version: v1.0.0
+  date: 12-5-2024
   category: digital
   tags:
     - QSPI
