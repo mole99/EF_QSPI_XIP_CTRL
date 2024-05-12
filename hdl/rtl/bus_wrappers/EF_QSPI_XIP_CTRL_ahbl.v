@@ -173,7 +173,7 @@ module EF_QSPI_XIP_CTRL_ahbl #(parameter    NUM_LINES   = 16,
     FR (   
             .clk(HCLK), 
             .rst_n(HRESETn), 
-            .addr({HADDR[23:OFF_WIDTH], {OFF_WIDTH{1'b0}}}), 
+            .addr({c_A[23:OFF_WIDTH], {OFF_WIDTH{1'b0}}}), 
             .rd(fr_rd), 
             .done(fr_done), 
             .line(c_line),
