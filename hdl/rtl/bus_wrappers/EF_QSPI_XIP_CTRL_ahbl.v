@@ -167,10 +167,10 @@ module EF_QSPI_XIP_CTRL_ahbl #(parameter    NUM_LINES   = 16,
             .wr(c_wr[1]) 
         );
 
-    EF_QSPI_XIP_CTRL #(   .NUM_LINES(NUM_LINES), 
+    EF_QSPI_XIP_CTRL #(     .NUM_LINES(NUM_LINES), 
                             .LINE_SIZE(LINE_SIZE), 
                             .RESET_CYCLES(RESET_CYCLES) )   
-    FR (   
+    FC (   
             .clk(HCLK), 
             .rst_n(HRESETn), 
             .addr({c_A[23:OFF_WIDTH], {OFF_WIDTH{1'b0}}}), 
