@@ -46,7 +46,7 @@ module FLASH_READER_QSPI #(parameter LINE_SIZE   = 16)(
                 READ =  1'b1;
 
     reg         state, nstate;
-    reg [7:0]   counter;
+    (* keep *) reg [7:0]   counter;
     reg [23:0]  saddr;
     reg [7:0]   data [LINE_BYTES-1 : 0]; 
 
