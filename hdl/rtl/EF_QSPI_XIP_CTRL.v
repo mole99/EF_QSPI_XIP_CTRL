@@ -176,15 +176,30 @@ module FLASH_RESET #(parameter RESET_CYCLES=1023) (
         else 
             if((idle == 1'b0) && (counter < RESET_CYCLES) && (ck == 1'b1))
                 counter <= counter + 1;
+    reg ce_n_reg;
+    reg d_o_reg;
+    always @(posedge clk or negedge rst_n)
+        if(!rst_n)begin
+            ce_n_reg <= 1'b1;
+            d_o_reg <= 1'b0;
+        end
+        else begin
+            ce_n_reg    <=   (counter > 10'd0 && counter < 10'd9)  ?   1'b0 :
+                        (counter > 10'd11 && counter < 10'd20)?   1'b0 :1'b1;
 
-    assign  ce_n    =   (counter > 10'd0 && counter < 10'd9)  ?   1'b0 :
-                        (counter > 10'd11 && counter < 10'd20)?   1'b0 :    
-                        1'b1;
+            d_o_reg     <=   (counter > 10'd0  && counter < 10'd9)  ?   C66[counter-1] :
+                        (counter > 10'd11 && counter < 10'd20) ?   C99[counter-12] :1'b0;
+        end
+            
+    // assign  ce_n    =   (counter > 10'd0 && counter < 10'd9)  ?   1'b0 :
+    //                     (counter > 10'd11 && counter < 10'd20)?   1'b0 :    
+    //                     1'b1;
 
-    wire    d_o     =   (counter > 10'd0  && counter < 10'd9)  ?   C66[counter-1] :
-                        (counter > 10'd11 && counter < 10'd20) ?   C99[counter-12] :
-                        1'b0;
-
+    // wire    d_o     =   (counter > 10'd0  && counter < 10'd9)  ?   C66[counter-1] :
+    //                     (counter > 10'd11 && counter < 10'd20) ?   C99[counter-12] :
+    //                     1'b0;
+    assign ce_n = ce_n_reg;
+    wire d_o = d_o_reg;
     assign  dout    =   {3'b0, d_o};
                     
     assign  done    =   (counter == RESET_CYCLES);
@@ -195,6 +210,7 @@ module FLASH_RESET #(parameter RESET_CYCLES=1023) (
     //((counter > 5'd1 && counter < 5'd10));
 
 endmodule
+            
 
 /*
     A QSPI XIP Flash controller  
