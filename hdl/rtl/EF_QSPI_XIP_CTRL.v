@@ -184,11 +184,13 @@ module FLASH_RESET #(parameter RESET_CYCLES=1023) (
             d_o_reg <= 1'b0;
         end
         else begin
-            ce_n_reg    <=   (counter > 10'd0 && counter < 10'd9)  ?   1'b0 :
-                        (counter > 10'd11 && counter < 10'd20)?   1'b0 :1'b1;
+            if (ck == 1'b1) begin
+                ce_n_reg    <=   (counter > 10'd0 && counter < 10'd9)  ?   1'b0 :
+                            (counter > 10'd11 && counter < 10'd20)?   1'b0 :1'b1;
 
-            d_o_reg     <=   (counter > 10'd0  && counter < 10'd9)  ?   C66[counter-1] :
-                        (counter > 10'd11 && counter < 10'd20) ?   C99[counter-12] :1'b0;
+                d_o_reg     <=   (counter > 10'd0  && counter < 10'd9)  ?   C66[counter-1] :
+                            (counter > 10'd11 && counter < 10'd20) ?   C99[counter-12] :1'b0;
+            end
         end
             
     // assign  ce_n    =   (counter > 10'd0 && counter < 10'd9)  ?   1'b0 :
