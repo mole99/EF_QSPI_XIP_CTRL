@@ -149,8 +149,8 @@ module EF_QSPI_XIP_CTRL_ahbl #(parameter    NUM_LINES   = 16,
                 RW   :  HREADYOUT <= 1'b1;
             endcase
         
-    assign fr_rd        =   ( HTRANS[1] & HSEL & HREADY & ~c_hit & (state==IDLE) ) |
-                            ( HTRANS[1] & HSEL & HREADY & ~c_hit & (state==RW) );
+    assign fr_rd        =   ( HTRANS[1] & last_HSEL & HREADY & ~c_hit & (state==IDLE) ) |
+            ( HTRANS[1] & last_HSEL & HREADY & ~c_hit & (state==RW) );
 
     assign c_A          =   (state != IDLE) ? last_HADDR[23:0] : HADDR;
     
