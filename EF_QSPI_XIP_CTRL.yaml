@@ -62,4 +62,5 @@ external_interface:
     width: 4
     description: Flash controller data out enable (Active Low)
     
+registers: []
     
