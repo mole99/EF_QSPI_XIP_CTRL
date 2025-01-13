@@ -35,22 +35,6 @@ The following table is the result for implementing the EF_QSPI_XIP_CTRL IP with 
 |---|---|---|
 |EF_QSPI_XIP_CTRL|1973| 250 |
 |EF_QSPI_XIP_CTRL_AHBL|1973|250|
-## The Programmer's Interface
-
-
-### Registers
-
-|Name|Offset|Reset Value|Access Mode|Description|
-|---|---|---|---|---|
-
-### Clock Gating
-The IP includes a clock gating feature that allows selective activation and deactivation of the clock using the ``GCLK`` register. This capability is implemented through the ``ef_util_gating_cell`` module, which is part of the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v). By default, the clock gating is disabled. To enable behavioral implmentation clock gating, only for simulation purposes, you should define the ``CLKG_GENERIC`` macro. Alternatively, define the ``CLKG_SKY130_HD`` macro if you wish to use the SKY130 HD library clock gating cell, ``sky130_fd_sc_hd__dlclkp_4``.
-
-**Note:** If you choose the [OpenLane2](https://github.com/efabless/openlane2) flow for implementation and would like to enable the clock gating feature, you need to add ``CLKG_SKY130_HD`` macro to the ``VERILOG_DEFINES`` configuration variable. Update OpenLane2 YAML configuration file as follows: 
-```
-VERILOG_DEFINES:
-- CLKG_SKY130_HD
-```
 
 ### The Interface 
 
@@ -73,9 +57,7 @@ VERILOG_DEFINES:
 |dout|output|4|Flash controller SPI data out.|
 |din|input|4|Flash controller SPI data in.|
 |douten|output|4|Flash controller data out enable (Active Low)|
-## Firmware Drivers:
-Firmware drivers for EF_QSPI_XIP_CTRL can be found in the [fw](https://github.com/efabless/EF_QSPI_XIP_CTRL/tree/main/fw) directory. EF_QSPI_XIP_CTRL driver documentation  is available [here](https://github.com/efabless/EF_QSPI_XIP_CTRL/blob/main/fw/README.md).
-You can also find an example C application using the EF_QSPI_XIP_CTRL drivers [here]().
+
 ## Installation:
 You can install the IP either by cloning this repository or by using [IPM](https://github.com/efabless/IPM).
 ##### 1. Using [IPM](https://github.com/efabless/IPM):
