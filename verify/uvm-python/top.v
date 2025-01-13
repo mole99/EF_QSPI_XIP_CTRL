@@ -22,7 +22,7 @@ module top();
     wire [3:0]  dout;
     wire [3:0]  douten;
     // design
-    EF_QSPI_XIP_CTRL_ahbl dut(
+    EF_QSPI_XIP_CTRL_AHBL dut(
         .HCLK(CLK), 
         .HRESETn(RESETn), 
         .HADDR(HADDR), 
