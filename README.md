@@ -24,8 +24,17 @@ AHB-Lite Quad I/O SPI Flash memory controller with direct mapped cache and suppo
 ### Wrapped IP System Integration
 
 ```verilog
-EF_QSPI_XIP_CTRL_APB INST (
-        `TB_AHBL_SLAVE_CONN,
+EF_QSPI_XIP_CTRL_AHBL INST (
+        .HCLK(CLK), 
+        .HRESETn(RESETn), 
+        .HADDR(HADDR), 
+        .HWRITE(HWRITE), 
+        .HSEL(HSEL), 
+        .HTRANS(HTRANS), 
+        .HWDATA(HWDATA),
+        .HRDATA(HRDATA), 
+        .HREADY(HREADY),
+        .HREADYOUT(HREADYOUT),
         .sck(sck),
         .ce_n(ce_n),
         .din(din),
@@ -33,7 +42,6 @@ EF_QSPI_XIP_CTRL_APB INST (
         .douten(douten)
 );
 ```
-> **_NOTE:_** `TB_APB_SLAVE_CONN is a convenient macro provided by [BusWrap](https://github.com/efabless/BusWrap/tree/main).
 
 ## Implementation example  
 
@@ -57,42 +65,16 @@ The following table is the result for implementing the EF_QSPI_XIP_CTRL IP with 
 |douten|output|4|spi data out enable|
 
 ## Installation:
-You can either clone repo or use [IPM](https://github.com/efabless/IPM) which is an open-source IPs Package Manager
-* To clone repo:
-```git clone https://https://github.com/shalan/EF_QSPI_FLASH_CTRL```
-* To download via IPM , follow installation guides [here](https://github.com/efabless/IPM/blob/main/README.md) then run 
-```ipm install EF_QSPI_XIP_CTRL```
-### Run cocotb UVM Testbench:
-In IP directory run:
- ```shell
- cd verify/uvm-python/
- ```
- ##### To run testbench for design with APB 
- To run all tests:
- ```shell
- make run_all_tests BUS_TYPE=APB
- ```
- To run a certain test:
- ```shell
- make run_<test_name> BUS_TYPE=APB
- ```
- To run all tests with a tag: 
- ```shell
- make run_all_tests TAG=<new_tag> BUS_TYPE=APB
- ```
- ##### To run testbench for design with APB
- To run all tests:
- ```shell
- make run_all_tests BUS_TYPE=AHB
- ```
- To run a certain test:
- ```shell
- make run_<test_name> BUS_TYPE=AHB
- ```
- To run all tests with a tag: 
- ```shell
- make run_all_tests TAG=<new_tag> BUS_TYPE=AHB
-```
+You can install the IP either by cloning this repository or by using [IPM](https://github.com/efabless/IPM).
+##### 1. Using [IPM](https://github.com/efabless/IPM):
+- [Optional] If you do not have IPM installed, follow the installation guide [here](https://github.com/efabless/IPM/blob/main/README.md)
+- After installing IPM, execute the following command ```ipm install EF_QSPI_XIP_CTRL```.
+> **Note:** This method is recommended as it automatically installs [EF_IP_UTIL](https://github.com/efabless/EF_IP_UTIL.git) as a dependency.
+##### 2. Cloning this repo: 
+- Clone [EF_IP_UTIL](https://github.com/efabless/EF_IP_UTIL.git) repository, which includes the required modules from the common modules library, [ef_util_lib.v](https://github.com/efabless/EF_IP_UTIL/blob/main/hdl/ef_util_lib.v).
+```git clone https://github.com/efabless/EF_IP_UTIL.git```
+- Clone the IP repository
+```git clone https://github.com/efabless/EF_QSPI_XIP_CTRL.git```
 
 ## Todo:
  - [ ] support for WB bus

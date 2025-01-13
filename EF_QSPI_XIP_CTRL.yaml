@@ -5,8 +5,8 @@ info:
   repo: github.com/efabless/EF_QSPI_XIP_CTRL
   owner: Efabless Corp.
   license: APACHE 2.0
-  author: Mohamed Shalan
-  email: mshalan@efabless.com
+  author: Efabless Corp.
+  email: ip_admin@efabless.com
   version: v1.0.4
   date: 1-9-2024
   category: digital

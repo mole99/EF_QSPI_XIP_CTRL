@@ -2,7 +2,7 @@ PLUSARGS += "+UVM_VERBOSITY=UVM_HIGH"
 TOPLEVEL := top
 MODULE   ?= top_module
 
-AHB_FILES ?= $(PWD)/../../hdl/rtl/bus_wrappers/EF_QSPI_XIP_CTRL_ahbl.v
+AHB_FILES ?= $(PWD)/../../hdl/rtl/bus_wrappers/EF_QSPI_XIP_CTRL_AHBL.v
 APB_FILES ?= ""
 WB_FILES ?= ""
 HDL_FILES ?= $(PWD)/../../hdl/rtl/EF_QSPI_XIP_CTRL.v $(PWD)/../../hdl/rtl/DMC.v
@@ -13,7 +13,7 @@ BUS_TYPE ?= AHB
 GL_MACROS += -DFUNCTIONAL 
 # GL_MACROS += "$(RTL_MACROS) -DFUNCTIONAL -DUNIT_DELAY=##1"
 ## netlist Gen 
-DESIGN_NAME = EF_QSPI_XIP_CTRL_ahbl
+DESIGN_NAME = EF_QSPI_XIP_CTRL_AHBL
 PRE_SYS_FILES = $(AHB_FILES) $(APB_FILES) $(WB_FILES) $(HDL_FILES)
 PDK_DIR = $(HOME)/.volare/volare/sky130/versions/bdc9412b3e468c102d01b7cf6337be06ec6e9c9a/sky130A/
 PDK_FILES = $(PDK_DIR)/libs.ref/sky130_fd_sc_hd/verilog/primitives.v $(PDK_DIR)/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v # get this from openlane logs in the future 

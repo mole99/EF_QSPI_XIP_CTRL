@@ -1,17 +1,21 @@
 /*
-	Copyright 2020 Mohamed Shalan (mshalan@aucegypt.edu)
-	
-	Licensed under the Apache License, Version 2.0 (the "License"); 
-	you may not use this file except in compliance with the License. 
-	You may obtain a copy of the License at:
-	http://www.apache.org/licenses/LICENSE-2.0
-	Unless required by applicable law or agreed to in writing, software 
-	distributed under the License is distributed on an "AS IS" BASIS, 
-	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-	See the License for the specific language governing permissions and 
-	limitations under the License.
-*/
+	Copyright 2024 Efabless Corp.
 
+	Author: Efabless Corp. (ip_admin@efabless.com)
+
+	Licensed under the Apache License, Version 2.0 (the "License");
+	you may not use this file except in compliance with the License.
+	You may obtain a copy of the License at
+
+	    http://www.apache.org/licenses/LICENSE-2.0
+
+	Unless required by applicable law or agreed to in writing, software
+	distributed under the License is distributed on an "AS IS" BASIS,
+	WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+	See the License for the specific language governing permissions and
+	limitations under the License.
+
+*/
 `timescale          1ns/1ps
 `default_nettype    none
 
@@ -39,7 +43,7 @@
     Software Reset Time = 2/clk x (RESET_CYCLES + 1)
 */
 
-module EF_QSPI_XIP_CTRL_ahbl #(parameter    NUM_LINES   = 16, 
+module EF_QSPI_XIP_CTRL_AHBL #(parameter    NUM_LINES   = 16, 
                                             LINE_SIZE   = 32, 
                                             RESET_CYCLES= 999 )
 (
