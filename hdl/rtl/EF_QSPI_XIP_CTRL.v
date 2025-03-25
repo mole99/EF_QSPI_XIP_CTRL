@@ -317,5 +317,7 @@ module EF_QSPI_XIP_CTRL #( parameter    NUM_LINES   = 16,
         .dout(rst_dout), 
         .douten(rst_douten)  
     );
+    
+    assign rst_din = '0;
 
 endmodule
